@@ -29,15 +29,15 @@ def fill_blanks(txt, bank):
     chances = 3
     while blank_num <= 4:
         srch_var = '__' + str(blank_num) + '__'
-        print txt 
-        answer = raw_input('What should go in blank number ' + srch_var + '? ')
+        print(txt)
+        answer = input('What should go in blank number ' + srch_var + '? ')
         if answer == bank[blank_num-1]:
             (txt, blank_num, chances) = right(txt, srch_var, answer, blank_num, chances)
         else:
             chances -= 1
             if chances == 0:
                 return game_text[4]
-            print game_text[0]
+            print(game_text[0])
     return game_text[1]                        
 
 easy_txt = """
@@ -91,7 +91,7 @@ def chosen_text(lvl_choice):
     elif lvl_choice == 'hard':
         txt = hard_txt
         bank = hard_bank
-    print fill_blanks(txt, bank)
+    print(fill_blanks(txt, bank))
 
 startup = """Time to chill and play a game.
 
@@ -104,16 +104,16 @@ def difficulty():
     This function is meant to present the user with an opening prompt that 
     lets them select the difficulty of the mad lib game.
     """     
-    print startup
+    print(startup)
     tries = 3
     level = ["easy", "medium", "hard"]
-    lvl_choice = raw_input(game_text[5])
+    lvl_choice = input(game_text[5])
     while lvl_choice not in level: 
         tries = tries - 1
         if tries == 0:
                 return game_text[2]
-        print game_text[3]
-        lvl_choice = raw_input(game_text[5])
+        print(game_text[3])
+        lvl_choice = input(game_text[5])
         if lvl_choice in level:
             continue
     return chosen_text(lvl_choice)
